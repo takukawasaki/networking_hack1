@@ -18,7 +18,7 @@ port                  = 0
 
 
 def usage():
-    print("BHP NET Tool")
+    print("NET Tool")
     print()
     print("Usage: bjpnet.py -t target_host -p port")
     print("-l --listen              - listen on [host]:[port] for")
@@ -31,10 +31,10 @@ def usage():
     print()
     print()
     print("Example: ")
-    print("bhnet.py -t 192.168.0.1 -p 5555 -l -c")
-    print("bhnet.py -t 192.168.0.1 -p 5555 -l -u c:\\target.exe")
-    print("bhnet.py -t 192.168.0.1 -p 5555 -l -e \"cat /etc/passwd\"")
-    print("echo 'ABCDEFGHI' | ./bhnet.py -t 192.168.11.12 -p 135")
+    print("net.py -t 192.168.0.1 -p 5555 -l -c")
+    print("net.py -t 192.168.0.1 -p 5555 -l -u c:\\target.exe")
+    print("net.py -t 192.168.0.1 -p 5555 -l -e \"cat /etc/passwd\"")
+    print("echo 'ABCDEFGHI' | ./net.py -t 192.168.11.12 -p 135")
     
     sys.exit(0)
 

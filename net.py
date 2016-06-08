@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 # -*- coding:utf-8 -*-
 
 import sys
@@ -35,6 +35,7 @@ def usage():
     print("bhnet.py -t 192.168.0.1 -p 5555 -l -u c:\\target.exe")
     print("bhnet.py -t 192.168.0.1 -p 5555 -l -e \"cat /etc/passwd\"")
     print("echo 'ABCDEFGHI' | ./bhnet.py -t 192.168.11.12 -p 135")
+    
     sys.exit(0)
 
     
@@ -128,12 +129,12 @@ def client_sender(buffer):
                 
             #bytes to str に変換python3
             response = response.decode()
-            print(response)
+            sys.stdout.write(response)
 
             #追加の入力を待機
             buffer = input("")
             buffer += "\n"
-
+    
             #bytes に変換して送るpython3
 
             buffer = buffer.encode()
@@ -162,7 +163,7 @@ def server_loop():
         client_socket, addr = server.accept()
         #クライアントからの新しい接続を処理するスレッドの起動
         client_thread = threading.Thread(
-            target = client_handler,args = (client_socket,))
+            target = client_handler, args = (client_socket, ))
         client_thread.start()
 
 def run_command(command):
@@ -213,7 +214,7 @@ def client_handler(client_socket):
         client_socket.send(output)
 
     if command:
-        prompt = b"<BHP:#> "
+        prompt = b"<pync:#> "
         client_socket.send(prompt)
 
         while True:
@@ -221,7 +222,7 @@ def client_handler(client_socket):
             while b"\n" not in cmd_buffer:
                 cmd_buffer += client_socket.recv(1024)
 
-            #bytes からstrにへんかん
+            ##bytes からstrにへんかん
             #cmd_buffer = cmd_buffer.decode()
             
             response = run_command(cmd_buffer)
